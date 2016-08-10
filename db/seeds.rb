@@ -10,6 +10,3 @@
  User.create(username: "cjessett", password: "sandalman")
  User.create(username: "mmmcgee", password: "punkrockqueen")
  User.create(username: "tomscode", password: "istherealjoke")
-
-
-
