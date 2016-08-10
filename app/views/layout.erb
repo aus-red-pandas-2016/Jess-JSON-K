@@ -7,27 +7,36 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title>App Title for Layout Page</title>
+  <title>Slack Low-flow</title>
 </head>
 <body>
-  <header role="banner" class="mar-t-5 pad-t-2 pad-b-4 pad-s-1 wrap-float bg-white">
-    <div class="max-w-700 center wrap-float">
-      <nav class="clearfix mar-b-1">
-        <ul class="no-bullets no-margin no-padding right">
-          <li class="pipe-separate t-light-green left"><a href="/">home</a></li>
+  <header role="banner" class="nav-banner">
+    <% if current_user %>
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-items"><a href="/">home</a></li>
+          <li class="nav-items"><a href="/logout">logout</a></li>
+          <li class="nav-items"><a href="/user/:id"><% @user.username %></a></li>
         </ul>
       </nav>
+    <% else %>
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-items"><a href="/">home</a></li>
+          <li class="nav-items"><a href="/login">login</a></li>
+          <li class="nav-items"><a href="/user/new">register</a></li>
+        </ul>
+      </nav>
+    <% end %>
 
       <div class="logo-container">
-        <h1>App Title </h1>
+        <h1>Slack Low-flow</h1>
       </div>
-    </div>
+
   </header>
 
-  <div class="bg-dk-green pad-t-2 pad-s-1 pad-b-8 mar-b-16 c-white">
-    <div class="max-w-700 center">
+  <div class="content-box">
       <%= yield %>
-    </div>
   </div>
 </body>
 </html>
