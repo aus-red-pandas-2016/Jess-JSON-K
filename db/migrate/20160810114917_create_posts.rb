@@ -2,7 +2,7 @@ class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
       t.string :title
-      t.string :questions
+      t.string :question
       t.integer :user_id
 
       t.timestamps
