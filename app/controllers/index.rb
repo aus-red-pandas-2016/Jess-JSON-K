@@ -1,15 +1,22 @@
-get '' do
+get '/' do
 
   erb :index
 end
 
+get '/login' do
+
+  erb :login
+end
+
 post '/login' do
-  @user = User.find_by(params[:username])
-  if @user.password == [params[:password]]
-    session[:id] = @user.id
-    erb :index
+  @user = User.find_by(username: params[:username])
+  if @user
+      @user.password == params[:password]
+      session[:id] = @user.id
+      redirect "/"
   else
-    alert "Incorrect Username and/or Password\nTry Again"
-    erb :login
+    #put an alert here
+    redirect "/login"
   end
+
 end
