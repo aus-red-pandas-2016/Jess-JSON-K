@@ -11,12 +11,12 @@
 </head>
 <body>
   <header role="banner" class="nav-banner">
-    <% if session[:id] %>
+    <% if current_user %>
       <nav>
         <ul class="nav-list">
           <li class="nav-items"><a href="/">home</a></li>
           <li class="nav-items"><a href="/logout">logout</a></li>
-          <li class="nav-items"><a href="/user/:id"><% @user.username %></a></li>
+          <li class="nav-items"><a href="/user/:id"><%= User.find(session[:id]).username %></a></li>
         </ul>
       </nav>
     <% else %>
@@ -24,7 +24,7 @@
         <ul class="nav-list">
           <li class="nav-items"><a href="/">home</a></li>
           <li class="nav-items"><a href="/login">login</a></li>
-          <li class="nav-items"><a href="/user/new">register</a></li>
+          <li class="nav-items"><a href="/register">register</a></li>
         </ul>
       </nav>
     <% end %>

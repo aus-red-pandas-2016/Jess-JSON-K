@@ -6,7 +6,8 @@ post '/user/new' do
   @user = User.new(username: params[:username])
   @user.password = params[:password]
   if @user.save
-    session[:user] = @user.username
+    session[:id] = @user.id
+    # puts session[:user]
     redirect '/'
   else
     redirect '/register'
@@ -36,3 +37,8 @@ get '/logout' do
   end
   redirect "/"
 end
+
+get '/session_viewer' do
+  session.inspect
+end
+
