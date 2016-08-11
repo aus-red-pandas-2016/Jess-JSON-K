@@ -12,4 +12,13 @@ class User < ActiveRecord::Base
       total_votes = upvotes - downvotes
   end
 
+  def password
+    @password ||= BCrypt::Password.new(original_pw)
+  end
+
+  def password=(encrypted_pw)
+    @password = BCrypt::Password.create(encrypted_pw)
+    self.original_pw = @password
+  end
+
 end
