@@ -10,11 +10,21 @@
     <%= erb :_vote_button, locals: { resource_class: @post.class.name, resource_id: @post.id, post_resource_id: @post.id}  %>
   </div>
 
+
+  <button class="new-comment-button">Add Comment</button>
+  <%= erb(:"/comment/new", locals: {resource: @post.id} ) %>
+
+
   <div class="answers">
   <h4 id="answers_header">Answers</h4>
   <% @post.answers.each do |answer| %>
     <p id="answer_description"><%= answer.description %></p>
-    <p id="answer_author">answered by: <%= answer.author %></p>
+    <% if session[:id] == @post.user.id %>
+      <% if @post.best_answer == nil %>
+        <p id="best_answer"><a href="/post/<%=@post.id%>/<%=  answer.id%>">best answer</a>
+      <% end %>
+    <% end %>
+    <p id="answer_author">answered <%= answer.author %></p>
     <p>Answer Vote Score: <%= answer.vote_count %></p>
       <%= erb :_vote_button, locals: { resource_id: answer.id, resource_class: answer.class.name, post_resource_id: @post.id} %>
   <% end %>
