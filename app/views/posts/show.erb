@@ -1,16 +1,36 @@
 <div class="full-post-container">
+  <h3>Snack Title</h3>
   <p><%= @post.title %></p>
   <p>Asked by: <%= @author %></p>
+  <p>------------------------------------------------------------------------------</p>
 
   <div class="post_question">
     <p><%= @post.question %></p>
 
   </div>
 
-  <button class="new-comment-button">Add Comment</button>
 
+  <button class="new-comment-button">Add Comment</button>
   <%= erb(:"/comment/new", locals: {resource: @post.id} ) %>
 
+
+  <div class="answers">
+  <h4 id="answers_header">Answers</h4>
+  <% @post.answers.each do |answer| %>
+    <p id="answer_description"><%= answer.description %></p>
+    <p id="answer_author">answered by: <%= answer.author %></p>
+  <% end %>
+
+  <form action="/post/<%= @post.id %>" method="post" id="new_answer">
+    <label for="your_answer">Your answer</label>
+    <input type="text" name="your_answer"/>
+    <br>
+
+    <button id="submit_answer" type="submit" value="submit_answer">Post Your Answer</button>
+
+  </form>
+
+  </div>
 </div>
 
 
