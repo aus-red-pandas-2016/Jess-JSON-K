@@ -6,19 +6,15 @@
   </form>
 
   <div class='index-listing'>
-    <% if @posts %>
-    <% @posts.each do |post| %>
-      <h2><a href='/posts/<%= post.id %>'><%= post.title %></a></h2>
+    <% posts = Post.all %>
+    <% posts.each do |p| %>
+      <h2><a href='/posts/<%= p.id %>'><%= p.title %></a></h2>
       <p>
-        <span class='votes'><%= post.vote_count %></span>
-        <span class='username'><%= post.username %></span>
-        <span class='username'><%= post.answers.count %></span>
+        <span class='votes'><%= p.vote_count %></span>
+        <span class='username'><%= p.title %></span>
+        <span class='username'><%= p.answers.count %></span>
       </p>
+    <% end %>
       <br>
-    <% end %>
-    <% else %>
-      There are no posts to view.......yet
-
-    <% end %>
   </div>
 </div>
