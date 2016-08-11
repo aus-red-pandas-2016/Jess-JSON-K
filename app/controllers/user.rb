@@ -29,3 +29,10 @@ post '/login' do
   end
 
 end
+
+get '/logout' do
+  if session[:id]
+    session.delete(:id)
+  end
+  redirect "/"
+end

@@ -6,6 +6,7 @@
   </form>
 
   <div class='index-listing'>
+    <% if @posts %>
     <% @posts.each do |post| %>
       <h2><a href='/posts/<%= post.id %>'><%= post.title %></a></h2>
       <p>
@@ -14,6 +15,10 @@
         <span class='username'><%= post.answers.count %></span>
       </p>
       <br>
+    <% end %>
+    <% else %>
+      There are no posts to view.......yet
+
     <% end %>
   </div>
 </div>
