@@ -8,7 +8,7 @@
   <div class='index-listing'>
     <% posts = Post.all %>
     <% posts.each do |post| %>
-      <h2><a href='/posts/<%= post.id %>'><%= post.title %></a></h2>
+      <h2><a href='/post/<%= post.id %>/show'><%= post.title %></a></h2>
       <p>
 
         <span class='title'><%= post.title %></span>
