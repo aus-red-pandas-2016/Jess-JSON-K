@@ -6,8 +6,8 @@ end
 post '/comment/new' do
   @user = User.find(current_user)
   @post = Post.find(params[:post_id])
-
   @comment = @post.comments.create(description: params[:comment], user_id: @user.id)
+  @post.save
   if request.xhr?
     erb(:"comment/show", layout: false)
   else

@@ -15,7 +15,7 @@ $(document).ready(function() {
       url: "/comment/new",
       data: formData
     }).done(function(info){
-      $(".full-post-container").append(info)
+      $("#comment_group").append(info);
 
       $("#comment-form-container form").trigger("reset")
       $("#comment-form-container").hide()
