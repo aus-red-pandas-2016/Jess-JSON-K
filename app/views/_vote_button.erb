@@ -1,10 +1,14 @@
+<!-- when injecting, need to pass a "local" which will contain a hash to reference the specific resource class the Vote is applied to
+ex:  erb :_vote_button, locals: { resource: post.id } %> -->
+
 <% if session[:id] %>
-  <form id="upvote" method="POST" action="/votes/up">
-    <input type="submit" name="Post" value="Love it!">
+  <form id="upvote" method="POST" action="/votes">
+    <input type="submit" name="vote_result" value="Love it!">
     <input type="hidden" name="_method" value="<%= resource %>">
   </form>
 
-  <form id="downvote" method="POST" action="/votes/down">
-    <input type="submit" value="Loathe it :(">
+  <form id="downvote" method="POST" action="/votes">
+    <input type="submit" name="vote_result" value="Loathe it :(">
+    <input type="hidden" name="_method" value="<%= resource %>">
   </form>
 <% end %>

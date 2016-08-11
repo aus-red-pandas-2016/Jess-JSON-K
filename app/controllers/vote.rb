@@ -1,14 +1,16 @@
-post "/votes/up" do
-  resource = Post.find(params[:_method].to_i)
+post "/votes" do
+  resource = Post.find(params[:_method])
 
-  Vote.create(upvote: true, user_id: session[:id], votable_id: resource.id, votable_type: resource.class)
+  if params[:vote_result] == "Love it!"
+    upvote_value = true
+  else
+    upvote_value = false
+  end
+
+  Vote.create(upvote: upvote_value, user_id: session[:id], votable_id: resource.id, votable_type: resource.class)
   redirect "/"
 
 end
 
-post "/votes/down" do
-
-
-end
 
 
