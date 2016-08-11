@@ -1,5 +1,5 @@
 <div class="index-container">
-  <h1>Slack List</h1>
+  <h1>Snack List</h1>
   <br>
   <form method="post" action='/posts/new'>
     <button type="submit" name="new_post" class="vote-button">New Post</button>
@@ -7,14 +7,13 @@
 
   <div class='index-listing'>
     <% posts = Post.all %>
-    <% posts.each do |p| %>
-      <h2><a href='/posts/<%= p.id %>'><%= p.title %></a></h2>
+    <% posts.each do |post| %>
+      <h2><a href='/posts/<%= post.id %>'><%= post.title %></a></h2>
       <p>
-        <span class='votes'><%= p.vote_count %></span>
-        <span class='username'><%= p.title %></span>
-        <span class='username'><%= p.answers.count %></span>
+
+        <span class='title'><%= post.title %></span>
+        <span class='answer_count'><%= post.answers.count %></span>
       </p>
     <% end %>
-      <br>
   </div>
 </div>
