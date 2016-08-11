@@ -6,6 +6,24 @@
     <p><%= @post.question %></p>
 
   </div>
+
+  <div class="answers">
+  <h4 id="answers_header">Answers</h4>
+  <% @post.answers.each do |answer| %>
+    <p id="answer_description"><%= answer.description %></p>
+    <p id="answer_author">answered by: <%= answer.author %></p>
+  <% end %>
+
+  <form action="/post/<%= @post.id %>" method="post" id="new_answer">
+    <label for="your_answer">Your answer</label>
+    <input type="text" name="your_answer"/>
+    <br>
+
+    <button id="submit_answer" type="submit" value="submit_answer">Post Your Answer</button>
+
+  </form>
+
+  </div>
 </div>
 
 
