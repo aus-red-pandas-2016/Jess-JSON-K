@@ -10,5 +10,4 @@ class Post < ActiveRecord::Base
     total_votes = upvotes - downvotes
   end
 
-
 end

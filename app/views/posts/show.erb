@@ -13,7 +13,9 @@
   <h4 id="answers_header">Answers</h4>
   <% @post.answers.each do |answer| %>
     <p id="answer_description"><%= answer.description %></p>
-    <p id="answer_author">answered by: <%= answer.author %></p>
+
+    <p id="best_answer"><a href="/post/<%=@post.id%>/<%=answer.id%>">best answer</a>
+    <p id="answer_author">answered <%= answer.author %></p>
   <% end %>
 
   <form action="/post/<%= @post.id %>" method="post" id="new_answer">

@@ -43,3 +43,15 @@ post '/post/:id' do
     redirect '/login'
   end
 end
+
+get '/post/:id/:answer_id' do
+  @user = User.find(session[:id])
+  @post = Post.find(params[:id])
+  @answer = Answer.find(params[:answer_id])
+  if @user == @post.user
+    @answer.best_answer = true
+    @answer.save
+    redirect "/post/#{@post.id}"
+  end
+end
+
