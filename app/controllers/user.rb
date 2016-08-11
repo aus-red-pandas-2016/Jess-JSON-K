@@ -42,3 +42,9 @@ get '/session_viewer' do
   session.inspect
 end
 
+get '/user/:id' do
+  @user = User.find(session[:id])
+  erb :"users/show"
+end
+
+

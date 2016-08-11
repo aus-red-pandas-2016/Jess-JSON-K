@@ -1,0 +1,20 @@
+<h3>Hey there, <%= @user.username %>!  You are looking quite Spec-Snackular!</h3>
+
+<p>Member since:  <%= @user.created_at %>
+
+<h3>Total Snack-Score: <%= @user.vote_count %>
+
+<h4>Your posted Snacks</h4>
+<div class='user_posts'>
+  <% @user.posts.each do |post| %>
+    <h2><a href='/post/<%= post.id %>/show'><%= post.title %></a></h2>
+    <p>Vote scoring: <span class='vote_count'><%= post.vote_count %></span></p>
+  <% end %>
+</div>
+
+<h4>Your posted answers</h4>
+<br>
+--
+<h4>Your posted comments</h4>
+<br>
+--
