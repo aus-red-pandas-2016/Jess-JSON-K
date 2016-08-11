@@ -31,6 +31,8 @@ post '/login' do
 
 end
 
+
+
 get '/logout' do
   if session[:id]
     session.delete(:id)
