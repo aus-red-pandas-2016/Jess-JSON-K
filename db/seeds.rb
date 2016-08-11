@@ -1,5 +1,7 @@
  User.delete_all
  Post.delete_all
+ Answer.delete_all
+ Comment.delete_all
 
  # Users seeds
  User.create(username: "ATXKatrina", password: "katsandcoco")
