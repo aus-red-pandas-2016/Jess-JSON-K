@@ -10,9 +10,9 @@
     <% posts.each do |post| %>
       <h2><a href='/post/<%= post.id %>/show'><%= post.title %></a></h2>
       <p>
-
-        <span class='title'><%= post.title %></span>
-        <span class='answer_count'><%= post.answers.count %></span>
+        Snacked by: <span class='author'><%= post.user.username %></span><br>
+        Total answers: <span class='answer_count'><%= post.answers.count %></span><br>
+        Total votes: <span class='vote_count'><%= post.votes.count %></span>
       </p>
       <%= erb :_vote_button %>
     <% end %>
