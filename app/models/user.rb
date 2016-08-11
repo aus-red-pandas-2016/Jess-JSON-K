@@ -4,7 +4,10 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :posts
 
-  def count_all_votes
-    self.comments.votes.count + self.answer.votes.count + self.posts.votes.count
-  end
+def vote_count
+    upvotes = self.votes.where(upvote: true).count
+    downvotes = self.votes.where(upvote: false).count
+    total_votes = upvotes - downvotes
+end
+
 end
