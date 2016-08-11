@@ -1,5 +1,10 @@
-<form id="upvote" method="POST" action="/votes/up">
-  <input type="submit" value="Love it!">
-  <input type="submit" name="false" value="Loathe it :(">
-</form>
+<% if session[:id] %>
+  <form id="upvote" method="POST" action="/votes/up">
+    <input type="submit" name="Post" value="Love it!">
+    <input type="hidden" name="_method" value="<%= resource %>">
+  </form>
 
+  <form id="downvote" method="POST" action="/votes/down">
+    <input type="submit" value="Loathe it :(">
+  </form>
+<% end %>
