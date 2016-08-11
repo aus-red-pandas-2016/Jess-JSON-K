@@ -1,14 +1,14 @@
 <div class="index-container">
   <h1>Snack List</h1>
   <br>
-  <form method="post" action='/posts/new'>
+  <form method="get" action='/post/new'>
     <button type="submit" name="new_post" class="vote-button">New Post</button>
   </form>
 
   <div class='index-listing'>
     <% posts = Post.all %>
     <% posts.each do |post| %>
-      <h2><a href='/post/<%= post.id %>/show'><%= post.title %></a></h2>
+      <h2><a href='/post/<%= post.id %>'><%= post.title %></a></h2>
       <p>
 
         <span class='title'><%= post.title %></span>
