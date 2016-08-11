@@ -10,9 +10,9 @@
     <% posts.each do |post| %>
       <h2><a href='/posts/<%= post.id %>'><%= post.title %></a></h2>
       <p>
-        <span class='votes'><%= p.vote_count %></span>
-        <span class='username'><%= p.title %></span>
-        <span class='username'><%= p.answers.count %></span>
+
+        <span class='title'><%= post.title %></span>
+        <span class='answer_count'><%= post.answers.count %></span>
       </p>
     <% end %>
   </div>
