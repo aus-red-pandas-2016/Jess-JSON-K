@@ -9,6 +9,11 @@
 
   </div>
 
+
+  <button class="new-comment-button">Add Comment</button>
+  <%= erb(:"/comment/new", locals: {resource: @post.id} ) %>
+
+
   <div class="answers">
   <h4 id="answers_header">Answers</h4>
   <% @post.answers.each do |answer| %>

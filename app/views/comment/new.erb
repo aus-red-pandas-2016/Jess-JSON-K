@@ -1,0 +1,15 @@
+<div hidden class="container" id="comment-form-container">
+  <h4>Add your comment</h4>
+  <br>
+
+  <form action="/comment/new" method="post" id="registration">
+    <br>
+
+    <input type="text" name="comment" placeholder="Write your comment here..."/>
+
+    <input type="hidden" value="<%= resource %>" name="post_id" />
+    <br>
+
+    <button id="new_comment" type="submit" value="submit_comment">Submit</button>
+  </form>
+</div>
