@@ -8,7 +8,7 @@ post "/votes" do
   end
 
   Vote.create(upvote: upvote_value, user_id: session[:id], votable_id: resource.id, votable_type: resource.class)
-  redirect "/"
+  redirect "/post/#{resource.id}"
 
 end
 

@@ -12,9 +12,9 @@
       <p>
         Snacked by: <span class='author'><%= post.user.username %></span><br>
         Total answers: <span class='answer_count'><%= post.answers.count %></span><br>
-        Vote scoring: <span class='vote_count'><%= post.vote_count %></span>
+        Vote score: <span class='vote_count'><%= post.vote_count %></span>
       </p>
-       <%= erb :_vote_button, locals: { resource: post.id } %>
+
     <% end %>
   </div>
 </div>
