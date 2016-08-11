@@ -1,3 +1,11 @@
+before "/post/*" do
+  if !request.get?
+    if !current_user
+      redirect "/login"
+    end
+  end
+end
+
 get '/post/new' do
   erb :"posts/new"
 end
