@@ -1,10 +1,19 @@
 get '/comment/new' do
-  erb :"_comment"
+  @lineage = params[:resource]
+  erb :"comment/new"
 end
 
 post '/comment/new' do
-  @user = User.find(session[:id])
+  @user = User.find(current_user)
+  @post = Post.find(params[:post_id])
 
-  # @post = Post.find(title: params[:post_title], question: params[:question])
-  # redirect "/post/#{@post.id}/show"
+  @comment = @post.comments.create(description: params[:comment], user_id: @user.id)
+  if request.xhr?
+    erb(:"comment/show", layout: false)
+  else
+    redirect "/post/#{@post.id}/show"
+  end
+end
+
+delete '/comment/:id' do
 end
