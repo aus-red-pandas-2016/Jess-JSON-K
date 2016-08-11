@@ -4,11 +4,15 @@ ex:  erb :_vote_button, locals: { resource: post.id } %> -->
 <% if session[:id] %>
   <form id="upvote" method="POST" action="/votes">
     <input type="submit" name="vote_result" value="Love it!">
-    <input type="hidden" name="_method" value="<%= resource %>">
+    <input type="hidden" name="resource_class" value="<%= resource_class %>">
+    <input type="hidden" name="resource_id" value="<%= resource_id %>">
+    <input type="hidden" name="post_resource_id" value="<%= post_resource_id %>">
   </form>
 
   <form id="downvote" method="POST" action="/votes">
     <input type="submit" name="vote_result" value="Loathe it :(">
-    <input type="hidden" name="_method" value="<%= resource %>">
+    <input type="hidden" name="resource_id" value="<%= resource_id %>">
+    <input type="hidden" name="resource_class" value="<%= resource_class %>">
+    <input type="hidden" name="post_resource_id" value="<%= post_resource_id %>">
   </form>
 <% end %>

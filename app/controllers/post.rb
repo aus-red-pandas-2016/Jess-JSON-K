@@ -24,10 +24,9 @@ post '/post/new' do
 end
 
 get '/post/:id' do
-  p params
+
   @post = Post.find(params[:id])
   @author = User.find(@post.user_id).username
-
   erb :"posts/show"
 end
 
