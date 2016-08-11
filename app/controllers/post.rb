@@ -51,6 +51,7 @@ get '/post/:id/:answer_id' do
   if @user == @post.user
     @answer.best_answer = true
     @answer.save
+    @post.best_answer
     redirect "/post/#{@post.id}"
   end
 end
