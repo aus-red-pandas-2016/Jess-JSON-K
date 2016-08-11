@@ -2,11 +2,12 @@
   <h3>Snack Title</h3>
   <p><%= @post.title %></p>
   <p>Asked by: <%= @author %></p>
+  <p>Question Vote Score: <%= @post.vote_count %></p>
   <p>------------------------------------------------------------------------------</p>
 
   <div class="post_question">
     <p><%= @post.question %></p>
-
+    <%= erb :_vote_button, locals: { resource_class: @post.class.name, resource_id: @post.id, post_resource_id: @post.id}  %>
   </div>
 
 
@@ -24,6 +25,8 @@
       <% end %>
     <% end %>
     <p id="answer_author">answered <%= answer.author %></p>
+    <p>Answer Vote Score: <%= answer.vote_count %></p>
+      <%= erb :_vote_button, locals: { resource_id: answer.id, resource_class: answer.class.name, post_resource_id: @post.id} %>
   <% end %>
 
   <form action="/post/<%= @post.id %>" method="post" id="new_answer">

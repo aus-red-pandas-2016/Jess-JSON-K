@@ -15,4 +15,5 @@ class Post < ActiveRecord::Base
     best_answer = self.answers.find_by(best_answer: true)
   end
 
+
 end
