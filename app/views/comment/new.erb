@@ -1,10 +1,9 @@
-<div hidden class="container comment-form">
+<div class="container comment-form">
   <h4>Add your comment</h4>
   <br>
 
   <form action="/comment/new" method="post" id="registration">
     <br>
-
     <input type="text" name="comment" placeholder="Write your comment here..."/>
     <input type="hidden" value="<%= resource %>" name="post_id" />
     <input type="hidden" value="<%= resource_class %>" name="resource_class" />
