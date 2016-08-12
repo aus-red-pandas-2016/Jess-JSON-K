@@ -1,9 +1,61 @@
 .container {
-  margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
+
 th {
   text-align: left;
+}
+
+img {
+  margin-bottom: -65px;
+  margin-top: 50px;
+  clear: right;
+}
+
+h1 {
+  margin: 0;
+  clear: left;
+}
+
+.content-box {
+  margin-top: 125px;
+  padding-bottom: 50px;
+}
+
+.logo-container {
+  font-size: 30px;
+  margin-left: 75px;
+}
+
+nav {
+  float: right;
+  padding-right: 30px;
+}
+
+body {
+  width: 1080px;
+  padding-left: 30px;
+}
+
+.index-container {
+  margin-left: 40%;
+}
+
+.full-post-container {
+  margin left: 400px;
+}
+
+h4 {
+  font-size: 30px;
+  text-decoration: underline;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+#snack-list {
+  text-decoration: underline;
 }
