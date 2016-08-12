@@ -16,15 +16,22 @@
       <% end %>
     </div>
 
+  <div id ="comment_group">
+    <% @post.comments.each do |comment| %>
+      <p><%= comment.description %></p>
+      <p>Comment by: <%= comment.user.username %></p>
+      <br>
+    <% end %>
+  </div>
 
-  <button class="new-comment-button">Add Comment</button>
-  <%= erb(:"/comment/new", locals: {resource: @post.id} ) %>
-
+    <button hidden class="new-comment-button">Add Comment</button>
+    <%= erb(:"/comment/new", locals: {resource: @post.id, resource_class: @post.class.name, resource_id: @post.id} ) %>
 
   <div class="answers">
   <h4 id="answers_header">Answers</h4>
   <% @post.answers.each do |answer| %>
     <p id="answer_description"><%= answer.description %></p>
+
     <% if session[:id] == @post.user.id %>
       <% if @post.best_answer == nil %>
         <p id="best_answer"><a href="/post/<%=@post.id%>/<%=  answer.id%>">best answer</a>
@@ -36,8 +43,19 @@
       <p>Snack you very much for your vote!</p>
     <% else %>
       <%= erb :_vote_button, locals: { resource_id: answer.id, resource_class: answer.class.name, post_resource_id: @post.id} %>
-    <% end %>
+    <br>
+
+      <% answer.comments.each do |comment| %>
+        <p><%= comment.description %></p>
+        <p>Comment by: <%= comment.user.username %></p>
+        <br>
+      <% end %>
+
+      <button hidden class="new-comment-button">Comment on this Answer</button>
+      <%= erb(:"/comment/new", locals: {resource: @post.id, resource_class: answer.class.name, resource_id: answer.id } ) %>
+    <br>
   <% end %>
+
 
   <form action="/post/<%= @post.id %>" method="post" id="new_answer">
     <label for="your_answer">Your answer</label>
