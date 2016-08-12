@@ -1,3 +1,4 @@
+
 .container {
   width: 600px;
   padding: 0px 20px 20px 20px;
@@ -9,14 +10,20 @@ th {
 }
 
 img {
-  margin-bottom: -65px;
+  margin-bottom: -70px;
   margin-top: 50px;
+  margin-left: 10px;
   clear: right;
 }
 
 h1 {
   margin: 0;
   clear: left;
+}
+
+#title {
+  color: #ff9900;
+  text-decoration: outline;
 }
 
 .content-box {
@@ -37,6 +44,7 @@ nav {
 body {
   width: 1080px;
   padding-left: 30px;
+  background-color: #d1d1e0;
 }
 
 .index-container {
