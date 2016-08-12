@@ -1,10 +1,11 @@
 $(document).ready(function() {
 
   $(".new-comment-button").on("click",function(){
-    $("#comment-form-container").show();
+    $(this).next()
+    $(this).next(".container.comment-form").show();
   })
 
-  $("#comment-form-container form").on("submit",function(e){
+  $(".container.comment-form form").on("submit",function(e){
     e.preventDefault();
 
     var formData = $(this).serialize();
@@ -15,10 +16,10 @@ $(document).ready(function() {
       url: "/comment/new",
       data: formData
     }).done(function(info){
-      $(".full-post-container").append(info)
+      $("#comment_group").append(info);
 
-      $("#comment-form-container form").trigger("reset")
-      $("#comment-form-container").hide()
+      $(".container.comment-form form").trigger("reset")
+      $(".container.comment-form").hide()
     })
 
   })
