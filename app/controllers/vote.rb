@@ -22,9 +22,6 @@ post "/votes" do
     redirect "/post/#{redirect_id}"
   end
 
-
-
-
 end
 
 
