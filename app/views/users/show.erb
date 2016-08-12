@@ -1,6 +1,6 @@
 <h3>Hey there, <%= @user.username %>!  You are looking quite Spec-Snackular!</h3>
 
-<p>Member since:  <%= @user.created_at %>
+<p>Member for <%= ((Time.now-@user.created_at)/3600).to_i %> days
 
 <h3>Total Snack-Score: <%= @user.vote_count %>
 
@@ -14,7 +14,17 @@
 
 <h4>Your posted answers</h4>
 <br>
---
+<div class='user_answers'>
+  <% @user.answers.each do |answer| %>
+    <h2><%= answer.description %></h2>
+    <p>Vote scoring: <span class='vote_count'><%= answer.vote_count %></span></p>
+  <% end %>
+</div>
 <h4>Your posted comments</h4>
 <br>
---
+<div class='user_comments'>
+  <% @user.comments.each do |comment| %>
+    <h2><%= comment.description %></h2>
+    <p>Vote scoring: <span class='vote_count'><%= comment.vote_count %></span></p>
+  <% end %>
+</div>
