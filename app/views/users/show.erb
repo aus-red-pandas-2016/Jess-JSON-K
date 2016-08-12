@@ -1,6 +1,6 @@
 <h3>Hey there, <%= @user.username %>!  You are looking quite Spec-Snackular!</h3>
 
-<p>Member since:  <%= @user.created_at %>
+<p>Member since:  <%= ((Time.now-@user.created_at)/60).to_i %>
 
 <h3>Total Snack-Score: <%= @user.vote_count %>
 
