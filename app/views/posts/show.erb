@@ -5,10 +5,16 @@
   <p>Question Vote Score: <%= @post.vote_count %></p>
   <p>------------------------------------------------------------------------------</p>
 
-  <div class="post_question">
-    <p><%= @post.question %></p>
-    <%= erb :_vote_button, locals: { resource_class: @post.class.name, resource_id: @post.id, post_resource_id: @post.id}  %>
-  </div>
+
+
+    <div class="post_question">
+      <p><%= @post.question %></p>
+      <% if @post.votes.find_by(user_id: session[:id]) %>
+        <p>Snack you very much for your vote!</p>
+      <% else %>
+        <%= erb :_vote_button, locals: { resource_class: @post.class.name, resource_id: @post.id, post_resource_id: @post.id}  %>
+      <% end %>
+    </div>
 
 
   <button class="new-comment-button">Add Comment</button>
@@ -26,7 +32,11 @@
     <% end %>
     <p id="answer_author">answered <%= answer.author %></p>
     <p>Answer Vote Score: <%= answer.vote_count %></p>
+    <% if answer.votes.find_by(user_id: session[:id]) %>
+      <p>Snack you very much for your vote!</p>
+    <% else %>
       <%= erb :_vote_button, locals: { resource_id: answer.id, resource_class: answer.class.name, post_resource_id: @post.id} %>
+    <% end %>
   <% end %>
 
   <form action="/post/<%= @post.id %>" method="post" id="new_answer">
