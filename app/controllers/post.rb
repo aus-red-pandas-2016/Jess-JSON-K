@@ -26,7 +26,6 @@ end
 get '/post/:id' do
   @post = Post.find(params[:id])
   @author = User.find(@post.user_id).username
-  # binding.pry
   erb :"posts/show"
 end
 
@@ -42,3 +41,16 @@ post '/post/:id' do
     redirect '/login'
   end
 end
+
+get '/post/:id/:answer_id' do
+  @user = User.find(session[:id])
+  @post = Post.find(params[:id])
+  @answer = Answer.find(params[:answer_id])
+  if @user == @post.user
+    @answer.best_answer = true
+    @answer.save
+    @post.best_answer
+    redirect "/post/#{@post.id}"
+  end
+end
+

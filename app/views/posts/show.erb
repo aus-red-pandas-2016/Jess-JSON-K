@@ -2,11 +2,12 @@
   <h3>Snack Title</h3>
   <p><%= @post.title %></p>
   <p>Asked by: <%= @author %></p>
+  <p>Question Vote Score: <%= @post.vote_count %></p>
   <p>------------------------------------------------------------------------------</p>
 
   <div class="post_question">
     <p><%= @post.question %></p>
-
+    <%= erb :_vote_button, locals: { resource_class: @post.class.name, resource_id: @post.id, post_resource_id: @post.id}  %>
   </div>
 
   <div id ="comment_group">
@@ -24,7 +25,15 @@
   <h4 id="answers_header">Answers</h4>
   <% @post.answers.each do |answer| %>
     <p id="answer_description"><%= answer.description %></p>
-    <p id="answer_author">answered by: <%= answer.author %></p>
+
+    <% if session[:id] == @post.user.id %>
+      <% if @post.best_answer == nil %>
+        <p id="best_answer"><a href="/post/<%=@post.id%>/<%=  answer.id%>">best answer</a>
+      <% end %>
+    <% end %>
+    <p id="answer_author">answered <%= answer.author %></p>
+    <p>Answer Vote Score: <%= answer.vote_count %></p>
+      <%= erb :_vote_button, locals: { resource_id: answer.id, resource_class: answer.class.name, post_resource_id: @post.id} %>
     <br>
 
       <% answer.comments.each do |comment| %>

@@ -3,14 +3,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :answers
   has_many :posts
-
   validates :username, uniqueness: true
-
-  def vote_count
-      upvotes = self.votes.where(upvote: true).count
-      downvotes = self.votes.where(upvote: false).count
-      total_votes = upvotes - downvotes
-  end
+  include Countable
 
   def password
     @password ||= BCrypt::Password.new(original_pw)
