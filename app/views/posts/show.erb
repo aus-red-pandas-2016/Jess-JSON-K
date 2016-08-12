@@ -24,7 +24,7 @@
     <% end %>
   </div>
 
-    <button hidden class="new-comment-button">Add Comment</button>
+    <button class="new-post-comment-button">Add Comment</button>
     <%= erb(:"/comment/new", locals: {resource: @post.id, resource_class: @post.class.name, resource_id: @post.id} ) %>
 
   <section class="answers">
@@ -53,7 +53,7 @@
         <br>
       <% end %>
 
-      <button hidden class="new-comment-button">Comment on this Answer</button>
+      <button class="new-answer-comment-button">Comment on this Answer</button>
       <%= erb(:"/comment/new", locals: {resource: @post.id, resource_class: answer.class.name, resource_id: answer.id } ) %>
     <br>
       </article>
