@@ -1,11 +1,8 @@
+
 <div class="index-container">
-  <h1>Snack List</h1>
+  <h1 id="snack-list">Snack List</h1>
   <br>
-  <% if session[:id] %>
-    <form method="get" action='/post/new'>
-      <button type="submit" name="new_post" class="vote-button">New Post</button>
-    </form>
-  <% end %>
+
   <div class='index-listing'>
     <% posts = Post.all %>
     <% posts.each do |post| %>
@@ -17,5 +14,12 @@
       </p>
 
     <% end %>
+   <br><br>
+    <% if session[:id] %>
+    <form method="get" action='/post/new'>
+      <button type="submit" name="new_post" class="vote-button">New Post</button>
+    </form>
+  <% end %>
   </div>
 </div>
+

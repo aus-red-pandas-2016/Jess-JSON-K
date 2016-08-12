@@ -7,13 +7,13 @@
 <h4>Your posted Snacks</h4>
 <div class='user_posts'>
   <% @user.posts.each do |post| %>
-    <h2><a href='/post/<%= post.id %>/show'><%= post.title %></a></h2>
+    <h2><a href='/post/<%= post.id %>'><%= post.title %></a></h2>
     <p>Vote scoring: <span class='vote_count'><%= post.vote_count %></span></p>
   <% end %>
 </div>
 
 <h4>Your posted answers</h4>
-<br>
+
 <div class='user_answers'>
   <% @user.answers.each do |answer| %>
     <h2><%= answer.description %></h2>
@@ -21,7 +21,7 @@
   <% end %>
 </div>
 <h4>Your posted comments</h4>
-<br>
+
 <div class='user_comments'>
   <% @user.comments.each do |comment| %>
     <h2><%= comment.description %></h2>
