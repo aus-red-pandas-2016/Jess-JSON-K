@@ -18,14 +18,20 @@
     <% end %>
   </div>
 
-  <button class="new-comment-button">Add Comment</button>
-  <%= erb(:"/comment/new", locals: {resource: @post.id} ) %>
+  <button class="" ss="new-comment-button">Add Comment</button>
+  <%= erb(:"/comment/new", locals: {resource: @post.id, resource_class: @post.class.name, resource_id: @post.id} ) %>
 
   <div class="answers">
   <h4 id="answers_header">Answers</h4>
   <% @post.answers.each do |answer| %>
     <p id="answer_description"><%= answer.description %></p>
     <p id="answer_author">answered by: <%= answer.author %></p>
+    <p class="answer_class">answer class: <%= answer.class.name %></p>
+
+      <button class="new-comment-button">Comment on this Answer</button>
+      <%= erb(:"/comment/new", locals: {resource: @post.id, resource_class: answer.class.name, resource_id: answer.id } ) %>
+
+    <br>
   <% end %>
 
   <form action="/post/<%= @post.id %>" method="post" id="new_answer">
