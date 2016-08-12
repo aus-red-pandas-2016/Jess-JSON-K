@@ -14,28 +14,34 @@
   <%= erb(:"/comment/new", locals: {resource: @post.id} ) %>
 
 
-  <div class="answers">
+  <section class="answers">
   <h4 id="answers_header">Answers</h4>
+  <ul id="answer_list">
   <% @post.answers.each do |answer| %>
-    <p id="answer_description"><%= answer.description %></p>
-    <% if session[:id] == @post.user.id %>
-      <% if @post.best_answer == nil %>
-        <p id="best_answer"><a href="/post/<%=@post.id%>/<%=  answer.id%>">best answer</a>
-      <% end %>
-    <% end %>
-    <p id="answer_author">answered <%= answer.author %></p>
+    <li class="answer">
+      <article>
+        <p><%= answer.description %></p>
+       <% if session[:id] == @post.user.id %>
+        <% if @post.best_answer == nil %>
+          <span class="best_answer"><a href="/post/<%=@post.id%>/<%=answer.id%>">best answer</a></span>
+        <% end %>
+       <% end %>
+      <span class="answer_author">answered <%= answer.author %></span>
+      </article>
+    </li>
   <% end %>
+  </ul>
 
   <form action="/post/<%= @post.id %>" method="post" id="new_answer">
     <label for="your_answer">Your answer</label>
     <input type="text" name="your_answer"/>
     <br>
 
-    <button id="submit_answer" type="submit" value="submit_answer">Post Your Answer</button>
+    <button class="new-answer-button" type="submit" value="submit_answer">Post Your Answer</button>
 
   </form>
+  </section>
 
-  </div>
 </div>
 
 
